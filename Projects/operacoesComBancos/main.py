@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 from Tkinter import *
-
-
-
 from conexaobanco import *
+
 class Main:
 
     def __init__(self, master):
@@ -17,22 +15,42 @@ class Main:
         self.email.pack()
         self.frame2 = Frame(master)
         self.frame2.pack()
-        self.add = Button(self.frame2, text="Salvar", width=40, command=self.vai_capeta)
+        self.add = Button(self.frame2, text="Salvar", width=40, command=self.vai_banco)
         self.add.pack()
-        self.find = Button(self.frame2, text="Consultar", width=40, command=self.vem_nimim)
+        self.find = Button(self.frame2, text="Consultar", width=40, command=self.consulta_banco)
         self.find.pack(side="bottom")
+
+
+
+        barralateral = Scrollbar(master)
+        barralateral.pack(fill=Y, side=RIGHT)
+        self.caixalista = Listbox(master, width=75, height=40)
+        self.caixalista.pack(padx=5, pady=5)
+        self.caixalista.config(yscrollcommand= barralateral.set)
+        barralateral.config(command=self.caixalista.yview)
+
         self.Banco = Banco()
         self.Banco.create_table()
 
 
-    def vai_capeta(self):
+
+
+
+    def vai_banco(self):
         usuario = self.user.get()
         email = self.email.get()
         self.Banco.entrada_dados(usuario, email)
 
 
-    def vem_nimim(self):
-        pass
+
+    def consulta_banco(self):
+        usuario = self.user.get()
+        chamada = self.Banco.chamada_dados(usuario)
+        for i in chamada:
+            self.caixalista.insert(END,i) #Preciso receber dados do banco
+
+
+
 
     def apaga_capeta(self):
         pass
