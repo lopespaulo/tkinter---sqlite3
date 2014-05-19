@@ -18,9 +18,7 @@ class Main:
         self.add = Button(self.frame2, text="Salvar", width=40, command=self.vai_banco)
         self.add.pack()
         self.find = Button(self.frame2, text="Consultar", width=40, command=self.consulta_banco)
-        self.find.pack(side="bottom")
-
-
+        self.find.pack()
 
         barralateral = Scrollbar(master)
         barralateral.pack(fill=Y, side=RIGHT)
@@ -28,6 +26,9 @@ class Main:
         self.caixalista.pack(padx=5, pady=5)
         self.caixalista.config(yscrollcommand= barralateral.set)
         barralateral.config(command=self.caixalista.yview)
+
+        self.erase = Button(self.frame2, text="Apagar", width=40, command=self.apaga_entrada)
+        self.erase.pack(side="bottom")
 
         self.Banco = Banco()
         self.Banco.create_table()
@@ -40,7 +41,7 @@ class Main:
 
 
     def consulta_banco(self):
-        usuario = "Leandro"
+        usuario = self.user.get()
         chamada = self.Banco.consulta_dados(usuario)
         for i in chamada:
             self.caixalista.insert(END,i) #Preciso receber dados do banco
@@ -48,7 +49,7 @@ class Main:
 
 
 
-    def apaga_capeta(self):
+    def apaga_entrada(self):
         pass
 
         #banco

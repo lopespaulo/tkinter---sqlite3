@@ -19,7 +19,7 @@ class Banco:
         self.connection.commit()
 
     def consulta_dados(self, usuario):
-        chamada = self.c.execute("SELECT usuario FROM dados WHERE usuario = ?", (usuario))
+        chamada = self.c.execute("SELECT * FROM dados WHERE usuario = :who", {"who": usuario})
         return chamada
 
         #date = str(datetime.datetime.fromtimestamp(int(time.time())).strftime('%Y-%m-%d %H:%M:%S'))
