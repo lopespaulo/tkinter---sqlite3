@@ -32,10 +32,6 @@ class Main:
         self.Banco = Banco()
         self.Banco.create_table()
 
-
-
-
-
     def vai_banco(self):
         usuario = self.user.get()
         email = self.email.get()
@@ -44,8 +40,8 @@ class Main:
 
 
     def consulta_banco(self):
-        usuario = self.user.get()
-        chamada = self.Banco.chamada_dados(usuario)
+        usuario = "Leandro"
+        chamada = self.Banco.consulta_dados(usuario)
         for i in chamada:
             self.caixalista.insert(END,i) #Preciso receber dados do banco
 

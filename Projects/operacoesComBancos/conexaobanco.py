@@ -19,7 +19,8 @@ class Banco:
         self.connection.commit()
 
     def consulta_dados(self, usuario):
-        chamada = self.c.execute("SELECT * FROM dados WHERE usuario=?",(usuario))
+        chamada = self.c.execute("SELECT usuario FROM dados WHERE usuario = ?", (usuario))
+        return chamada
 
         #date = str(datetime.datetime.fromtimestamp(int(time.time())).strftime('%Y-%m-%d %H:%M:%S'))
         #self.c.execute("INSERT INTO dados (usuario, email, mensagem, date) VALUES (?, ?, ?, ?)", (usuario, email, comentario, date))
