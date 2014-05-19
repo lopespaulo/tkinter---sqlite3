@@ -44,13 +44,15 @@ class Main:
         usuario = self.user.get()
         chamada = self.Banco.consulta_dados(usuario)
         for i in chamada:
-            self.caixalista.insert(END,i) #Preciso receber dados do banco
+            self.caixalista.insert(END,i)
 
 
 
 
     def apaga_entrada(self):
-        pass
+        usuario = self.user.ger()
+        self.Banco.
+        pass #Criando função para apagar entradas.
 
         #banco
         #self.conectar = sqlite3.connect("dadoseemails.db")
