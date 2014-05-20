@@ -50,9 +50,11 @@ class Main:
 
 
     def apaga_entrada(self):
-        usuario = self.user.ger()
-        self.Banco.
-        pass #Criando função para apagar entradas.
+        posicao = str(self.caixalista.get(ACTIVE))
+        print posicao
+        self.Banco.apaga_dados(posicao)
+        self.caixalista.delete(ANCHOR)
+
 
         #banco
         #self.conectar = sqlite3.connect("dadoseemails.db")

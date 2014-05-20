@@ -22,8 +22,9 @@ class Banco:
         chamada = self.c.execute("SELECT * FROM dados WHERE usuario = :who", {"who": usuario})
         return chamada
 
-    def apaga_dados(self, linha):
-        self.c.execute("DELETE * FROM dados WHERE") #Criando sql para apagar dados de listbox
+    def apaga_dados(self, posicao):
+        self.c.execute("DELETE FROM dados WHERE usuario = :who", {"who": posicao})
+        self.connection.commit()
 
         #date = str(datetime.datetime.fromtimestamp(int(time.time())).strftime('%Y-%m-%d %H:%M:%S'))
         #self.c.execute("INSERT INTO dados (usuario, email, mensagem, date) VALUES (?, ?, ?, ?)", (usuario, email, comentario, date))
