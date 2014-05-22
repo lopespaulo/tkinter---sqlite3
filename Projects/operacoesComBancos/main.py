@@ -38,21 +38,18 @@ class Main:
         email = self.email.get()
         self.Banco.entrada_dados(usuario, email)
 
-
-
     def consulta_banco(self):
         usuario = self.user.get()
         chamada = self.Banco.consulta_dados(usuario)
+        self.caixalista.delete(0,END)
         for i in chamada:
             self.caixalista.insert(END,i)
 
-
-
-
     def apaga_entrada(self):
-        posicao = str(self.caixalista.get(ACTIVE))
-        print posicao
-        self.Banco.apaga_dados(posicao)
+        posicao = self.caixalista.get(ACTIVE)
+        ids = posicao[0]
+        posicao = str(posicao[1])
+        self.Banco.apaga_dados(ids, posicao)
         self.caixalista.delete(ANCHOR)
 
 

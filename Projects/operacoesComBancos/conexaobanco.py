@@ -22,8 +22,8 @@ class Banco:
         chamada = self.c.execute("SELECT * FROM dados WHERE usuario = :who", {"who": usuario})
         return chamada
 
-    def apaga_dados(self, posicao):
-        self.c.execute("DELETE FROM dados WHERE usuario = :who", {"who": posicao})
+    def apaga_dados(self, ids, posicao):
+        self.c.execute("DELETE FROM dados WHERE ids = :identifier AND usuario= :who", {"who": posicao, "identifier": ids})
         self.connection.commit()
 
         #date = str(datetime.datetime.fromtimestamp(int(time.time())).strftime('%Y-%m-%d %H:%M:%S'))
